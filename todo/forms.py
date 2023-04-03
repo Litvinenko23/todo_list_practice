@@ -1,6 +1,6 @@
 from django import forms
 
-from todo.models import Task
+from todo.models import Task, Tag
 
 
 class TaskForm(forms.ModelForm):
@@ -11,3 +11,9 @@ class TaskForm(forms.ModelForm):
             'deadline': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
             'tags': forms.CheckboxSelectMultiple(),
         }
+
+
+class TagForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = ["name"]
