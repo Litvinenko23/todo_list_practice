@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
+from todo.forms import TaskForm
 from todo.models import Tag, Task
 
 
@@ -46,19 +47,25 @@ class TaskListView(generic.ListView):
 
 class TaskCreateView(generic.CreateView):
     model = Task
-    fields = "__all__"
-    success_url = reverse_lazy("todo:index")
-
-    # if form.is_valid()
+    form_class = TaskForm
+    success_url = reverse_lazy("todo:task-list")
 
 
 class TaskUpdateView(generic.CreateView):
     model = Task
-    fields = "__all__"
-    success_url = reverse_lazy("todo:index")
+    form_class = TaskForm
+    success_url = reverse_lazy("todo:task-list")
+    template_name = "todo/task_form.html"
 
 
 class TaskDeleteView(generic.DeleteView):
     model = Task
     fields = "__all__"
-    success_url = reverse_lazy("todo:index")
+    success_url = reverse_lazy("todo:task-list")
+
+
+def complete_undo_button(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.is_done = not task.is_done
+    task.save()
+    return redirect("todo:task-list")
