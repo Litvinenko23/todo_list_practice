@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-{{ tags }}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Todo-List Home</h1>
+{#  <p>The Taxi service has the following record counts:</p>#}
+  <ul>
+    <li><strong>Tags:</strong> {{ tags }}</li>
+{#    <li><strong>Drivers:</strong> {{ num_drivers }}</li>#}
+{#    <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>#}
+  </ul>
+
+{% endblock %}

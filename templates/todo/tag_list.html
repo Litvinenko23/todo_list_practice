@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Tag list
+{#    <a href="{% url 'todo:tag-create' %}" class="btn btn-primary link-to-page">#}
+{#      Create#}
+{#    </a>#}
+  </h1>
+  {% if tag_list %}
+    <ul>
+      {% for tag in tag_list %}
+{#        <li>#}
+{#          <a href="{% url "todo:tag-detail" pk=tag.id %} ">{{ tag.id }}</a>#}
+{#          {{ tag.name }}#}
+{#        </li>#}
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no tags in todo list</p>
+  {% endif %}
+{% endblock %}
+

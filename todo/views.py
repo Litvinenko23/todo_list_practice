@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.views import generic
 
-from todo.models import Tag
+from todo.models import Tag, Task
 
 
 def index(request):
@@ -11,3 +12,13 @@ def index(request):
     }
 
     return render(request, "todo/index.html", context=context)
+
+
+class TagListView(generic.ListView):
+    model = Tag
+    context_object_name = "tag_list"
+    template_name = "todo/tag_list.html"
+
+
+class TaskListView(generic.ListView):
+    model = Task
