@@ -50,3 +50,15 @@ class TaskCreateView(generic.CreateView):
     success_url = reverse_lazy("todo:index")
 
     # if form.is_valid()
+
+
+class TaskUpdateView(generic.CreateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("todo:index")
+
+
+class TaskDeleteView(generic.DeleteView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("todo:index")

@@ -18,13 +18,14 @@
 {#  <p><strong>Tags:</strong> {{ driver.license_number }}</p>#}
 
   <div>
-    <h4>Tasks</h4>
 
     {% for task in task_list %}
         <hr>
         <p>Content: {{ task.content }}</p>
         <p><strong>Created:</strong> {{ task.created_at }}</p>
-        <p><strong>Tags:</strong> {{ task.tags.name }}</p>
+        <p><strong>Tags:</strong> {{ task.tags.name }}</p><a href="{% url 'todo:task-update' pk=task.id %}" class="btn btn-secondary link-to-page">
+                Update
+              </a>
 
     {% empty %}
       <p>No task!</p>
