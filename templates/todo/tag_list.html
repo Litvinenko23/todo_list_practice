@@ -3,12 +3,12 @@
 {% block content %}
   <h1>
     Tags
-    <a href="{% url 'taxi:tag-create' %}" class="btn btn-primary link-to-page">
+    <a href="{% url 'todo:tag-create' %}" class="btn btn-primary link-to-page">
       Add
     </a>
   </h1>
 
-  {% if manufacturer_list %}
+  {% if tag_list %}
     <table class="table">
       <tr>
         <th>Name</th>
